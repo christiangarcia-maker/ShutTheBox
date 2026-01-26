@@ -8,6 +8,7 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		// p = función para almacenar los nombres de los jugadores 
 		String p ="";
 		
 		System.out.println("Player 1 introduce your name: ");
@@ -32,6 +33,7 @@ public class Main {
 		
 	}
 	
+	// Comprobar si el nombre esta almacenado y leer el nombre
 	public static String isVoid(String name, Scanner sc) {
 		name = sc.next();
 		while (name.isEmpty() || name == null) {
