@@ -7,48 +7,52 @@ import java.util.Scanner;
 public class Functions {
 	
 	Random random = new Random();
+	Scanner sc = new Scanner(System.in);
 	
-	public void turno(int[] jugador) {
+	public void turn(int[] player) {
 		
-		int tirada1 = random.nextInt(1,7);
-		int tirada2 = random.nextInt(1,7);
-		int tirada = tirada1+tirada2;
+		int throw1 = random.nextInt(1,7);
+		int throw2 = random.nextInt(1,7);
+		int throwsTotal = throw1+throw2;
 		
-		System.out.println("Has sacado un " + tirada1 + " y un " + tirada2 + ", tienes un " + tirada);
+		System.out.println("You got a " + throw1 + " and a " + throw2 + ", total is " + throwsTotal);
 		
-		
-		jugar(jugador, tirada);
+		play(player, throwsTotal);
 		
 	}
 	
-	public void jugar(int[] jugador, int tirada) {
+	public void play(int[] player, int throwTotal) {
 		
-		System.out.print("Te quedan las casillas: ");
+		System.out.print("You missing the tiles: ");
 
-		boolean primeraCasilla = true;
+		boolean firstTile = true;
 		
-		for (int i = 0; i < jugador.length; i++) {
-			if (jugador[i] != 0) {
-				if (primeraCasilla) {
-					System.out.print(jugador[i]);
-					primeraCasilla = false;
+		for (int i = 0; i < player.length; i++) {
+			if (player[i] != 0) {
+				if (firstTile) {
+					System.out.print(player[i]);
+					firstTile = false;
 				} else {
-					System.out.print(", " + jugador[i]);
+					System.out.print(", " + player[i]);
 				}
 			}
 		}
 		
 		try {
-			boolean valorCorrecto = false;
-			try {
-				
-			} catch (InputMismatchException e) {
-				
-			}
+			boolean correctValue = false;
 			do {
-				System.out.println("¿Quieres tirar la casilla con el numero o quieres hacer una combinacion? (1/2): ");
-				
-			} while (!valorCorrecto);
+				try {
+					try {
+						System.out.println("¿Do you want to use the whole number or a combination? (1/2): ");
+						int election = sc.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("Incorrect input, try again");
+					}
+				} catch (AssertionError e) {
+					System.out.println("Incorrect input, try again");
+				}
+					
+			} while (!correctValue);
 			
 		} catch (AssertionError e){
 			
