@@ -17,11 +17,11 @@ public class Functions {
 		
 		System.out.println("You got a " + throw1 + " and a " + throw2 + ", total is " + throwsTotal);
 		
-		play(player, throwsTotal);
+		checkTiles(player, throwsTotal);
 		
 	}
 	
-	public void play(int[] player, int throwTotal) {
+	public void checkTiles(int[] player, int throwTotal) {
 		
 		System.out.print("You missing the tiles: ");
 
@@ -40,19 +40,23 @@ public class Functions {
 		
 		try {
 			boolean correctValue = false;
+			int election = 0;
 			do {
 				try {
 					try {
-						System.out.println("¿Do you want to use the whole number or a combination? (1/2): ");
-						int election = sc.nextInt();
-					} catch (InputMismatchException e) {
+						System.out.println("¿Do you want to use just the number or a combination? (1/2): ");
+						election = sc.nextInt();
+						assert (election>0&&election<=2);
+						correctValue = true;
+					} catch (AssertionError e) {
 						System.out.println("Incorrect input, try again");
 					}
-				} catch (AssertionError e) {
+				} catch (InputMismatchException e) {
 					System.out.println("Incorrect input, try again");
 				}
-					
 			} while (!correctValue);
+			
+			
 			
 		} catch (AssertionError e){
 			
