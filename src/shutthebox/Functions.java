@@ -15,7 +15,7 @@ public class Functions {
 		int throw2 = random.nextInt(1,7);
 		int throwsTotal = throw1+throw2;
 		
-		System.out.println("You got a " + throw1 + " and a " + throw2 + ", total is " + throwsTotal);
+		System.out.println("You got " + throw1 + " and " + throw2 + ", total is " + throwsTotal);
 		
 		checkTiles(player, throwsTotal);
 		
@@ -69,7 +69,11 @@ public class Functions {
 				System.out.println("Incorrect input, try again");
 			}
 		} while (!correctValue);
+		
+		
 	}
+	
+	
 	
 	public void endTurn(int[] player) {
 		
