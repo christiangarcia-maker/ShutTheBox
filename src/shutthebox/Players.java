@@ -11,6 +11,10 @@ public class Players {
 	private String name;
 	private int[] tiles;
 	private boolean puedeSeguir;
+	
+	public boolean setSeguir(boolean seguir) {
+		return seguir;
+	}
 
 	public void setName (String name) {
 		if (!name.isBlank()) {
@@ -20,6 +24,10 @@ public class Players {
 	
 	public void setTiles (int[] tiles) {
 		
+	}
+	
+	public boolean getSeguir(boolean seguir) {
+		return seguir; 
 	}
 	
 	public String getName (String name) {

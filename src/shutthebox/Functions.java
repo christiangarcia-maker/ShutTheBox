@@ -9,6 +9,16 @@ public class Functions {
 	Random random = new Random();
 	Scanner sc = new Scanner(System.in);
 	
+	// Comprobar si el nombre esta almacenado y leer el nombre
+		public static String isVoid(String name, Scanner sc) {
+			name = sc.next();
+			while (name.isEmpty() || name == null) {
+				System.out.println("Introduce your name");
+				name = sc.next();
+			}
+			return name; 
+		}
+	
 	public void turn(int[] player) {
 		
 		int throw1 = random.nextInt(1,7);
