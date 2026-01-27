@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Functions {
 	
-	Random random = new Random();
-	Scanner sc = new Scanner(System.in);
+	static Random random = new Random();
+	static Scanner sc = new Scanner(System.in);
 	
 	// Comprobar si el nombre esta almacenado y leer el nombre
 		public static String isVoid(String name, Scanner sc) {
@@ -19,7 +19,9 @@ public class Functions {
 			return name; 
 		}
 	
-	public void turn(int[] player) {
+		
+		
+	public static void turn(int[] player) {
 		
 		int throw1 = random.nextInt(1,7);
 		int throw2 = random.nextInt(1,7);
@@ -28,10 +30,10 @@ public class Functions {
 		System.out.println("You got " + throw1 + " and " + throw2 + ", total is " + throwsTotal);
 		
 		checkTiles(player, throwsTotal);
-		
+				
 	}
 	
-	public void checkTiles(int[] player, int throwTotal) {		
+	public static void checkTiles(int[] player, int throwTotal) {		
 		boolean possibleMove = false;
 		for (int i = 0; i < player.length; i++) {
 			for (int j = 0; j < player.length; j++) {
@@ -49,7 +51,7 @@ public class Functions {
 		}
 	}
 	
-	public void select(int[] player, int throwTotal) {
+	public static void select(int[] player, int throwTotal) {
 		System.out.print("You missing the tiles: ");
 		boolean firstTile = true;
 		for (int i = 0; i < player.length; i++) {
@@ -68,7 +70,7 @@ public class Functions {
 		do {
 			try {
 				try {
-					System.out.println("¿Do you want to use just the number or a combination? (1/2): ");
+					System.out.println("\n¿Do you want to use just the number or a combination? (1/2): ");
 					election = sc.nextInt();
 					assert (election>0&&election<=2);
 					correctValue = true;
@@ -85,7 +87,7 @@ public class Functions {
 	
 	
 	
-	public void endTurn(int[] player) {
+	public static void endTurn(int[] player) {
 		
 	}
 

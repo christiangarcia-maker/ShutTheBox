@@ -21,8 +21,20 @@ public class Main {
 		p = Functions.isVoid(p,sc);
 		Players player2 = new Players(p);
 		
+		System.out.println("----SHUT THE BOX STARTS-----");
 		
-		while(player1.)
+		while(player1.getSeguir() || player2.getSeguir()) {
+			
+			if (player1.getSeguir()) {
+				System.out.println("Turn of " + player1.getName());
+				Functions.turn(player1.getTiles());
+				
+			}
+			if (player2.getSeguir()) {
+				
+			}
+			
+		}
 		
 		sc.close();
 		
