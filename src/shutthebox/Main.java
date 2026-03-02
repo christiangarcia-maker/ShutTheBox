@@ -12,50 +12,50 @@ public class Main {
 		try {
 			String p = "";
 
-			System.out.println("Player 1 introduce your name: ");
+			System.out.println("Player 1 enter your name: ");
 			p = Functions.isVoid(p, sc);
 			Players player1 = new Players(p);
 
 			p = "";
 
-			System.out.println("Player 2 introduce your name: ");
+			System.out.println("Player 2 enter your name: ");
 			p = Functions.isVoid(p, sc);
 			Players player2 = new Players(p);
 
 			System.out.println("----SHUT THE BOX STARTS-----");
 
-			// Turno del jugador 1
-			if (player1.getSeguir()) {
+			// Player 1 turn
+			if (player1.getCanContinue()) {
 				int[] updatedTiles1 = Functions.turn(player1.getTiles(), player1.getName());
 				player1.setTiles(updatedTiles1);
 			}
 			
-			// Turno del jugador 2
-			if (player2.getSeguir()) {
+			// Player 2 turn
+			if (player2.getCanContinue()) {
 				int[] updatedTiles2 = Functions.turn(player2.getTiles(), player2.getName());
 				player2.setTiles(updatedTiles2);
 			}
 
-			// Calcular puntos finales
+			// Calculate final points
 			int pointsP1 = Functions.endTurn(player1.getTiles(), player1.getName());
 			int pointsP2 = Functions.endTurn(player2.getTiles(), player2.getName());
 
-			// Determinar ganador
+			// Determine winner
 			System.out.println("\n----GAME OVER-----");
 			if (pointsP1 == pointsP2) {
-				System.out.println("¡Empate!");
+				System.out.println("Draw!");
 			} else if (pointsP1 < pointsP2) {
-				System.out.println("¡Gana " + player1.getName() + "!");
+				System.out.println(player1.getName() + " wins!");
 			} else {
-				System.out.println("¡Gana " + player2.getName() + "!");
+				System.out.println(player2.getName() + " wins!");
 			}
 
 		} catch (InputMismatchException e) {
-			System.out.println("Error: Entrada inválida. El juego se cerrará.");
+			System.out.println("Error: Invalid input. The game will close.");
 		} catch (NullPointerException e) {
-			System.out.println("Error: Se produjo un error con los datos del jugador.");
+			System.out.println("Error: A problem occurred with the player data.");
 		} catch (Exception e) {
-			System.out.println("Error inesperado: " + e.getMessage());
+			System.out.println("Unexpected error: " + e.getMessage());
 		} finally {
 			sc.close();
 		}

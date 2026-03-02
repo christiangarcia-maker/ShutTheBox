@@ -6,20 +6,20 @@ import java.util.Scanner;
 
 public class Functions {
 	
-	// Objetos estáticos para generar números aleatorios y leer entrada del usuario
+	// Static objects to generate random numbers and read user input
 	static Random random = new Random();
 	static Scanner sc = new Scanner(System.in);
 	
-	// Comprobar si el nombre esta almacenado y leer el nombre
+	// Check if the name is stored and read the name
 	public static String isVoid(String name, Scanner sc) {
 		
 		try {
 			name = sc.nextLine();
-			// Bucle que se repite mientras el nombre esté vacío o sea nulo
-			while (name.isEmpty() || name == null) {
-				System.out.println("Introduce your name");
+			// Loop that repeats while the name is empty or null
+			while (name == null || name.isEmpty()) {
+				System.out.println("Enter your name");
 				name = sc.nextLine();
-				sc.nextLine(); //Limpia buffer por si vuelve a leer 
+				sc.nextLine(); // Clear buffer in case it reads again
 			}
 			return name;
 		} catch (Exception e) {
@@ -29,49 +29,49 @@ public class Functions {
 	}
 	
 
-	// Inicia el turno de un jugador mostrando su nombre
+	// Starts a player's turn by displaying their name
 	public static int[] turn(int[] player, String playername) {
 		
 		System.out.println("Turn of " + playername);
 		System.out.println();
 		
-		// Llama a la función de lanzamiento de dados
+		// Calls the dice rolling function
 		return dices(player);
 	}
 	
-	// Lanza dos dados y procesa el resultado del turno
+	// Rolls two dice and processes the turn result
 	public static int[] dices(int[] player) {
 
-		// Genera dos números aleatorios entre 1 y 6 (simula lanzar dos dados)
+		// Generates two random numbers between 1 and 6 (simulates rolling two dice)
 		int throw1 = random.nextInt(1,7);
 		int throw2 = random.nextInt(1,7);
-		int throwsTotal = throw1+throw2;
+		int throwsTotal = throw1 + throw2;
 		
 		System.out.println("You got " + throw1 + " and " + throw2 + ", total is " + throwsTotal);
 		
-		// Verifica si el jugador puede hacer un movimiento con este total
+		// Checks if the player can make a move with this total
 		boolean canPlay = checkTiles(player, throwsTotal);
 		if (canPlay) {
-			// Si puede jugar, permite seleccionar fichas
+			// If they can play, allow tile selection
 			return select(player, throwsTotal);
 		}
-		// Si no puede jugar, termina el turno y devuelve el array sin cambios
+		// If they cannot play, end the turn and return the array unchanged
 		return player;
 	}
 	
-	// Verifica si es posible hacer un movimiento válido con el total de los dados
+	// Checks if it is possible to make a valid move with the dice total
 	public static boolean checkTiles(int[] player, int throwTotal) {		
 		boolean possibleMove = false;
-		// Recorre todas las combinaciones posibles de dos fichas
+		// Loops through all possible combinations of two tiles
 		for (int i = 0; i < player.length; i++) {
 			for (int j = 0; j < player.length; j++) {
-				// Si dos fichas diferentes suman el total de los dados, hay movimiento posible
+				// If two different tiles add up to the dice total, a move is possible
 				if (player[i] != player[j] && player[i] + player[j] == throwTotal) {
 					possibleMove = true;
 				}
 			}
 		}
-		// Muestra las fichas que le quedan al jugador
+		// Shows the tiles the player still has
 		missingTiles(player);
 		System.out.println("");
 		if (possibleMove) {
@@ -83,25 +83,25 @@ public class Functions {
 		}
 	}
 	
-	// Muestra las fichas que aún están disponibles para el jugador
+	// Displays the tiles that are still available for the player
 	public static void missingTiles(int[] player) {
-		System.out.print("You missing the tiles: ");
+		System.out.print("Remaining tiles: ");
 		boolean firstTile = true;
-		// Recorre el array y muestra solo las fichas que no son 0 (las disponibles)
+		// Loops through the array and shows only tiles that are not 0 (available ones)
 		for (int i = 0; i < player.length; i++) {
 			if (player[i] != 0) {
 				if (firstTile) {
 					System.out.print(player[i]);
 					firstTile = false;
 				} else {
-					// Añade comas entre los números
+					// Adds commas between numbers
 					System.out.print(", " + player[i]);
 				}
 			}
 		}
 	}
 	
-	// Permite al jugador seleccionar qué fichas quiere jugar
+	// Allows the player to select which tiles they want to play
 	public static int[] select(int[] player, int throwTotal) {
 		boolean correctValue = false;
 		int election = 0;
@@ -114,86 +114,86 @@ public class Functions {
 					try {
 						System.out.println("\nSelect how many numbers to play: ");
 						election = sc.nextInt();
-						// Verifica que la elección esté entre 1 y 4 fichas
-						assert (election>0&&election<=4);
+						// Checks that the selection is between 1 and 4 tiles
+						assert (election > 0 && election <= 4);
 						correctValue = true;
 					} catch (AssertionError e) {
 						System.out.println("Incorrect input, try again");
-						sc.nextLine(); // Limpia el buffer
+						sc.nextLine(); 
 					}
 				} catch (InputMismatchException e) {
 					System.out.println("Incorrect input, try again");
-					sc.nextLine(); // Limpia el buffer
+					sc.nextLine(); 
 				}
 			} while (!correctValue);
 			
-			// Crea un array para almacenar los números seleccionados
+			// Creates an array to store selected numbers
 			numbers = new int[election];
 			int num = 0;
 			
-			// Lee cada número que el jugador quiere jugar
+			// Reads each number the player wants to play
 			try {
 				for (int i = 1; i <= election; i++) {
-					System.out.println("Introduce number " + i + ": ");
+					System.out.println("Enter number " + i + ": ");
 					numbers[i-1] = sc.nextInt();
 					num += numbers[i-1];
 				}
-				// Verifica que la suma de los números sea igual al total de los dados
+				// Checks that the sum of the numbers equals the dice total
 				if (num != throwTotal) {
 					System.out.println("Not possible");
 					possible = false;
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid input, please enter numbers only");
-				sc.nextLine(); // Limpia el buffer
+				sc.nextLine(); 
 				possible = false;
 			}
 		} while (!possible);
 		
-		// Procesa las fichas seleccionadas
+		// Process the selected tiles
 		return playTiles(player, numbers, throwTotal);
 		
 	}
 	
-	// Procesa las fichas jugadas y actualiza el array del jugador
+	// Processes played tiles and updates the player's array
 	public static int[] playTiles(int[] player, int[] numbers, int throwTotal) {
-		// Crea una copia del array del jugador
+		// Creates a copy of the player's array
 		int[] playerCopy = new int[player.length];
 		for (int i = 0; i < player.length; i++) {
 			playerCopy[i] = player[i];
-			// Busca coincidencias entre las fichas del jugador y los números seleccionados
+			// Looks for matches between player tiles and selected numbers
 			for (int j = 0; j < numbers.length; j++) {
 				if (player[i] == numbers[j]) {
-					// Marca la ficha como jugada (pone 0)
+					// Marks the tile as played (sets to 0)
 					playerCopy[i] = 0;
 					numbers[j] = 0;
 				}
 			}
 		}
-		// Verifica que todos los números seleccionados existan en las fichas del jugador
+		// Checks that all selected numbers exist in the player's tiles
 		int rest = 0;
 		for (int num : numbers) {
 			rest += num;
 		}
-		// Si quedan números sin usar, la combinación es incorrecta
+		// If there are unused numbers left, the combination is incorrect
 		if (rest != 0) {
 			System.out.println("Wrong combination!");
-			// Vuelve a pedir la selección
+			// Ask for selection again
 			return select(player, throwTotal);
 		} else {
-			// Si la combinación es correcta, actualiza el array del jugador
+			// If the combination is correct, update the player's array
 			for (int i = 0; i < player.length; i++) {
 				player[i] = playerCopy[i];
 			}
 		}
-		// Continúa con el siguiente lanzamiento de dados
+		// Continue with the next dice roll
 		return dices(player);
 	}
 	
-	// Calcula y muestra los puntos finales del jugador
+	// Calculates and displays the player's final points
 	public static int endTurn(int[] player, String playerName) {
 		int points = 0;
-		// Suma todas las fichas que quedan sin jugar
+		// Adds all remaining unplayed tiles
 		for (int i = 0; i < player.length; i++) {
 			points += player[i];
 		}

@@ -2,71 +2,70 @@ package shutthebox;
 
 public class Players {
 
-	// Atributos privados de la clase
-	private String name; // Nombre del jugador
-	private int[] tiles; // Array que representa las 12 fichas del jugador
-	private boolean puedeSeguir; // Indica si el jugador puede continuar jugando
+	// Private class attributes
+	private String name; // Player's name
+	private int[] tiles; // Array representing the player's 12 tiles
+	private boolean canContinue; // Indicates if the player can continue playing
 
-	// Constructor que recibe el nombre del jugador
+	// Constructor that receives the player's name
 	public Players(String name) {
 		try {
 			this.name = name;
-			this.puedeSeguir = true; // Al inicio, el jugador siempre puede seguir
-			// Inicializa el array con las 12 fichas numeradas del 1 al 12
+			this.canContinue = true; // At the beginning, the player can always continue
+			// Initializes the array with the 12 numbered tiles from 1 to 12
 			this.tiles = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
 		} catch (Exception e) {
-			// En caso de error, inicializa con valores por defecto
+			// In case of error, initialize with default values
 			this.name = "Player";
-			this.puedeSeguir = true;
+			this.canContinue = true;
 			this.tiles = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
 		}
 	}
 
-	//GETTERS
+	// GETTERS
 	
-	// Devuelve si el jugador puede seguir jugando
-	public boolean getSeguir() {
-		return puedeSeguir;
+	// Returns whether the player can continue playing
+	public boolean getCanContinue() {
+		return canContinue;
 	}
 
-	// Devuelve el nombre del jugador
+	// Returns the player's name
 	public String getName () {
 		return name;
 	}
 
-	// Devuelve el array de fichas del jugador
+	// Returns the player's tiles array
 	public int[] getTiles () {
 		return tiles;
 	}
 
-
-	//SETTERS
+	// SETTERS
 	
-	// Establece si el jugador puede seguir jugando
-	public void setSeguir(boolean puedeSeguir) {
-		this.puedeSeguir = puedeSeguir;
+	// Sets whether the player can continue playing
+	public void setCanContinue(boolean canContinue) {
+		this.canContinue = canContinue;
 	}
 
-	// Establece el nombre del jugador
-	// Solo lo cambia si el nombre no está en blanco
+	// Sets the player's name
+	// Only changes it if the name is not blank
 	public void setName (String name) {
 		try {
 			if (!name.isBlank()) {
-				// Elimina espacios en blanco al inicio y final
+				// Removes leading and trailing spaces
 				this.name = name.trim();
 			}
 		} catch (Exception e) {
-			// Si hay error, no modifica el nombre
+			// If there is an error, do not modify the name
 			System.out.println("Error setting name");
 		}
 	}
 
-	// Establece el array de fichas del jugador
+	// Sets the player's tiles array
 	public void setTiles (int[] tiles) {
 		try {
 			this.tiles = tiles;
 		} catch (Exception e) {
-			// Si hay error, mantiene el array actual
+			// If there is an error, keep the current array
 			System.out.println("Error setting tiles");
 		}
 	}
