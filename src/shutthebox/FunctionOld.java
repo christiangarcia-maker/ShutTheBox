@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Functions {
+public class FunctionOld {
 	
 	// Static objects to generate random numbers and read user input
 	static Random random = new Random();
