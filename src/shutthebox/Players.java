@@ -49,24 +49,16 @@ public class Players {
 	// Sets the player's name
 	// Only changes it if the name is not blank
 	public void setName (String name) {
-		try {
 			if (!name.isBlank()) {
 				// Removes leading and trailing spaces
 				this.name = name.trim();
 			}
-		} catch (Exception e) {
-			// If there is an error, do not modify the name
-			System.out.println("Error setting name");
-		}
+
 	}
 
 	// Sets the player's tiles array
 	public void setTiles (int[] tiles) {
-		try {
 			this.tiles = tiles;
-		} catch (Exception e) {
-			// If there is an error, keep the current array
-			System.out.println("Error setting tiles");
-		}
+
 	}
 }
