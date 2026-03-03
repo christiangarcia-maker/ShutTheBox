@@ -1,5 +1,7 @@
 package shutthebox;
 
+import java.util.Scanner;
+
 public class Player {
 
 	// Private class attributes
@@ -8,9 +10,9 @@ public class Player {
 
 
 	// Constructor that receives the player's name
-	public Player(String name) {
+	public Player(String playerName) {
 		try {
-			this.name = (name == null || name.isBlank()) ? "Player" : name.trim();
+			this.name = (playerName == null || playerName.isBlank()) ? "Player" : playerName.trim();
 			// Initializes the array with the 12 numbered tiles from 1 to 12
 			this.tiles = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
 		} catch (Exception e) {
@@ -19,6 +21,7 @@ public class Player {
 			this.tiles = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
 		}
 	}
+	
 	//=====================================
 	// 				GETTERS
 	//=====================================
@@ -61,4 +64,31 @@ public class Player {
 	public void setTiles (int[] tiles) {
 		this.tiles = tiles;
 	}
+
+
+	//=====================================
+	// 				FUNCTIONS
+	//=====================================
+	
+
+// Check if the name is stored and read the name
+public static String isVoid() {
+	String playerName;
+	try {
+		playerName = Main.reader.nextLine().trim();
+
+		// Loop that repeats while the name is empty
+		while (playerName.isBlank()) {
+			System.out.println("Enter your name:");
+			playerName = Main.reader.nextLine().trim();
+		}
+
+	} catch (Exception e) {
+		System.out.println("Error reading name.");
+		playerName = "Player";
+	}
+
+	return playerName;
+}
+
 }

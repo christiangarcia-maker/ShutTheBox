@@ -1,22 +1,22 @@
 package shutthebox;
 
 import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
+	public static Random random = new Random();
+	public static Scanner reader = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
 		try {
-			String p = "";
 
 			System.out.println("Player 1 enter your name: ");
-			p = Function.isVoid(p, Function.sc);
-			Player player1 = new Player(p);
+			Player player1 = new Player(Player.isVoid());
 
-			p = ""; //Clean variable 
 			System.out.println("Player 2 enter your name: ");
-			p = Function.isVoid(p, Function.sc);
-			Player player2 = new Player(p);
+			Player player2 = new Player(Player.isVoid());
 
 			System.out.println("----SHUT THE BOX STARTS-----");
 
@@ -50,7 +50,8 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Unexpected error: " + e.getMessage());
 		} finally {
-			Function.sc.close();
+			reader.close();
 		}
 	}
+
 }

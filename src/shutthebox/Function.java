@@ -6,30 +6,6 @@ import java.util.Scanner;
 
 public class Function {
 
-	// Static objects to generate random numbers and read user input
-	static Random random = new Random();
-	static Scanner sc = new Scanner(System.in);
-
-	// Check if the name is stored and read the name
-	public static String isVoid(String name, Scanner sc) {
-
-		try {
-			name = sc.nextLine().trim();
-
-			// Loop that repeats while the name is empty
-			while (name.isBlank()) {
-				System.out.println("Enter your name:");
-				name = sc.nextLine().trim();
-			}
-
-		} catch (Exception e) {
-			System.out.println("Error reading name.");
-			name = "Player";
-		}
-
-		return name;
-	}
-	
 	// Starts a player's turn by displaying their name
 	public static int[] turn(int[] player, String playerName) {
 
@@ -60,8 +36,8 @@ public class Function {
 	// Rolls two dices and processes the turn result
 	public static boolean dices(int[] player) {
 
-		int throw1 = random.nextInt(6) + 1;
-		int throw2 = random.nextInt(6) + 1;
+		int throw1 = Main.random.nextInt(6) + 1;
+		int throw2 = Main.random.nextInt(6) + 1;
 		int total = throw1 + throw2;
 
 		System.out.println("You got " + throw1 + " and " + throw2 + " = " + total);
@@ -128,11 +104,11 @@ public class Function {
 		while (!validInput) {
 			try {
 				System.out.println("How many numbers do you want to use?");
-				count = sc.nextInt();
+				count = Main.reader.nextInt();
 				validInput = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid input. Enter a number.");
-				sc.nextLine(); // clear buffer
+				Main.reader.nextLine(); // clear buffer
 			}
 		}
 
@@ -145,12 +121,12 @@ public class Function {
 			while (!correctNumber) {
 				try {
 					System.out.println("Enter number:");
-					numbers[i] = sc.nextInt();
+					numbers[i] = Main.reader.nextInt();
 					sum += numbers[i];
 					correctNumber = true;
 				} catch (InputMismatchException e) {
 					System.out.println("Invalid input. Enter a number.");
-					sc.nextLine(); // clear buffer
+					Main.reader.nextLine(); // clear buffer
 				}
 			}
 		}
