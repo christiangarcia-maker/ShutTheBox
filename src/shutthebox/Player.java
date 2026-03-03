@@ -1,12 +1,11 @@
 package shutthebox;
 
-import java.util.Scanner;
-
 public class Player {
 
 	// Private class attributes
 	private String name; // Player's name
 	private int[] tiles; // Array representing the player's 12 tiles
+	private Dice[] dice = {new Dice(), new Dice()}; //
 
 
 	// Constructor that receives the player's name
@@ -32,20 +31,30 @@ public class Player {
 	}
 
 	// Returns the player's tiles array
-	public int[] getTiles () {
-		return tiles;
-	}
+	//public int[] getTiles () {
+	//	return tiles;
+	//}
 
 	// Returns the sum of all remaining tiles (the player's score). Lower is better.
 	public int getScore() {
 		int sum = 0;
-		for (int t : tiles) sum += t;
+		for (int tile : tiles) sum += tile;
 		return sum;
 	}
 
 	// Returns true if all tiles have been closed
 	public boolean hasShutTheBox() {
 		return getScore() == 0;
+	}
+	
+	//Protege original ns si fufa !!!!!!!
+	public int[] getTiles() {
+		return tiles.clone();
+	}
+	
+	//
+	public Dice[] getDice() {
+		return dice; 
 	}
 
 	//=====================================
@@ -61,8 +70,8 @@ public class Player {
 	}
 
 	// Sets the player's tiles array
-	public void setTiles (int[] tiles) {
-		this.tiles = tiles;
+	public void setTiles (int[] newTiles) {
+		this.tiles = newTiles.clone();
 	}
 
 
@@ -90,5 +99,6 @@ public static String isVoid() {
 
 	return playerName;
 }
+
 
 }
