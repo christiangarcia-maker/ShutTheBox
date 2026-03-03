@@ -11,7 +11,6 @@ public class Function {
 	static Scanner sc = new Scanner(System.in);
 
 	// Check if the name is stored and read the name
-	// Check if the name is stored and read the name
 	public static String isVoid(String name, Scanner sc) {
 
 		try {
