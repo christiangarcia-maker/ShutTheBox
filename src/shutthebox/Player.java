@@ -5,13 +5,11 @@ public class Player {
 	// Private class attributes
 	private String name; // Player's name
 	private int[] tiles; // Array representing the player's 12 tiles
-	// 1: canContinue eliminado — no se actualizaba, siempre true.
-	// Ahora se usan hasShutTheBox y hasValidMove para saber si no es povo util.
+
 
 	// Constructor that receives the player's name
 	public Player(String name) {
 		try {
-			// 2: validación en vez de dejar el nombre pasar comprueba y si eso salta e
 			this.name = (name == null || name.isBlank()) ? "Player" : name.trim();
 			// Initializes the array with the 12 numbered tiles from 1 to 12
 			this.tiles = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
@@ -48,10 +46,10 @@ public class Player {
 	}
 
 	//=====================================
-	// 				SeTTERS
+	// 				SETTERS
 	//=====================================
 	// Sets the player's name
-	// Only changes it if the name is not balnk
+	// Only changes it if the name is not blank
 	public void setName (String name) {
 		if (!name.isBlank()) {
 			// Removes leading and trailing spaces

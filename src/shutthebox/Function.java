@@ -57,7 +57,7 @@ public class Function {
 		return player;
 	}
 
-	// Rolls two dice and processes the turn result
+	// Rolls two dices and processes the turn result
 	public static boolean dices(int[] player) {
 
 		int throw1 = random.nextInt(6) + 1;
