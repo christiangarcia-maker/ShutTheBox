@@ -30,11 +30,6 @@ public class Player {
 		return name;
 	}
 
-	// Returns the player's tiles array
-	//public int[] getTiles () {
-	//	return tiles;
-	//}
-
 	// Returns the sum of all remaining tiles (the player's score). Lower is better.
 	public int getScore() {
 		int sum = 0;
