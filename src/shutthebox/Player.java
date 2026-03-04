@@ -62,6 +62,10 @@ public class Player {
 	//=====================================
 	// Sets the player's name
 	// Only changes it if the name is not blank
+	/**
+	 * 
+	 * @param name
+	 */
 	public void setName (String name) {
 		if (!name.isBlank()) {
 			// Removes leading and trailing spaces
@@ -70,6 +74,10 @@ public class Player {
 	}
 
 	// Sets the player's tiles array
+	/**
+	 * 
+	 * @param newTiles
+	 */
 	public void setTiles (int[] newTiles) {
 		this.tiles = newTiles.clone();
 	}
@@ -81,6 +89,10 @@ public class Player {
 	
 
 // Check if the name is stored and read the name
+	/**
+	 * 
+	 * @return
+	 */
 public static String isVoid() {
 	String playerName;
 	try {

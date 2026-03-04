@@ -8,7 +8,7 @@ public class Dice {
      * Al crear un objeto dado necesitariamos aletarorio el indice (Dice = {1,2,3,4,5,6})
      * Entonces creamos un objeto dado que directamente almacene un valor aleatorio 
      */
-    // Roll this die (1-6) and update value
+    // Roll this dice (1-6) and update value
     public int roll() {
         this.value = Main.random.nextInt(1,7);
         return value;
@@ -24,17 +24,17 @@ public class Dice {
 	//=====================================
 	
     // Roll two dice and return sum
-    public static int rollTwo(Dice die1, Dice die2) {
-        die1.roll();
-        die2.roll();
-        return die1.getValue() + die2.getValue();
+    public static int rollTwo(Dice dice1, Dice dice2) {
+        dice1.roll();
+        dice2.roll();
+        return dice1.getValue() + dice2.getValue();
     }
 
     // Roll two dice and return individual values for display
-    public static int[] rollTwoValues(Dice die1, Dice die2) {
-        die1.roll();
-        die2.roll();
-        return new int[]{die1.getValue(), die2.getValue()};
+    public static int[] rollTwoValues(Dice dice1, Dice dice2) {
+        dice1.roll();
+        dice2.roll();
+        return new int[]{dice1.getValue(), dice2.getValue()};
     }
 	
 	

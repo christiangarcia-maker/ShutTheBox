@@ -4,7 +4,15 @@ import java.util.Arrays;
 
 
 public class Function {
-
+	
+	
+/**
+ * 
+ * @param tiles
+ * @param playerName
+ * @param dice
+ * @return
+ */
 	 public static int[] turn(int[] tiles, String playerName, Dice[] dice) {
 	        System.out.println("\n--- " + playerName + "'s turn ---");
 	        int[] board = tiles.clone();  // Work on copy to avoid mutating original prematurely
