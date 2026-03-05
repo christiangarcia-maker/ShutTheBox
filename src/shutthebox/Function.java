@@ -120,7 +120,7 @@ public class Function {
 	     * @return {@code true} if the selection is valid, {@code false} otherwise
 	     */
 	    private static boolean validateSelection(int[] board, int[] selected, int total) {
-	        int sum = Arrays.stream(selected).sum();
+	        int sum = Arrays.stream(selected).sum(); //AQUIII
 	        if (sum != total) return false;
 	        
 	        // Check all selected tiles exist, are available, and unique
