@@ -5,6 +5,7 @@ public class Dice {
 	// Private variable that stores the current value of the die (visible face)
 	// Initializes to 1 by default
     private int value = 1;  // default 1
+    
     /*
 	 * Explication: 
      * When creating a given object, we need to randomize the index (Dice = {1,2,3,4,5,6}). 
