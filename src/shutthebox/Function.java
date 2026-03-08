@@ -130,7 +130,7 @@ public class Function {
      * @return {@code true} if the selection is valid, {@code false} otherwise
      */
     private static boolean validateSelection(int[] board, int[] selected, int total) {
-        int sum = Arrays.stream(selected).sum(); //AQUIII
+        int sum = Arrays.stream(selected).sum(); 
         if (sum != total) return false;
         
 	    /*
