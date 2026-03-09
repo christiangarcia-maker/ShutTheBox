@@ -70,10 +70,10 @@ public class Function {
      */
     private static boolean subsetSum(int[] board, int target, int index, int currentSum) {
         
-    	// // In case we have reached the target amount
+    	// In case we have reached the target amount
     	if (currentSum == target) return true;
     	
-    	// // In case we exceed the sum or reach the end of the board
+    	// In case we exceed the sum or reach the end of the board
         if (currentSum > target || index >= board.length) return false;
         
         // Skip this tile

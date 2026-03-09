@@ -42,7 +42,7 @@ public class Player {
 		return getScore() == 0;
 	}
 	
-	//Protege original ns si fufa !!!!!!!
+	//Protege original 
 	public int[] getTiles() {
 		return tiles.clone();
 	}
